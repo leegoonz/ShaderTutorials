@@ -2,7 +2,7 @@
 	//show values to edit in inspector
 	Properties{
 		_Color ("Tint", Color) = (0, 0, 0, 1)
-		_MainTex ("Texture", 2D) = "white" {}
+		[HDR]_MainTex ("Texture", 2D) = "white" {}
 	}
 
 	SubShader{
@@ -51,9 +51,9 @@
 			//the fragment shader function
 			fixed3 frag(v2f i) : SV_TARGET{
 			    //read the texture color at the uv coordinate
-				fixed3 col = tex2D(_MainTex, i.uv);
+				float3 col = tex2D(_MainTex, i.uv);
 				//multiply the texture color and tint color
-				col *= _Color;
+				//col *= _Color;
 				//return the final color to be drawn on screen
 				return col;
 			}
